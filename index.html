@@ -15,1555 +15,2287 @@
 
     <meta
         name="description"
-        content="Trading Plan Pro - Plan de trading professionnel"
+        content="Plan de Trading professionnel - gestion des capitaux, journal et performances"
     >
 
-    <title>Trading Plan Pro</title>
+    <title>Plan de Trading</title>
 
-    <link rel="manifest" href="manifest.json">
-
+    <!-- =========================================================
+         CSS PRINCIPAL
+         ========================================================= -->
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<div id="app">
+    <!-- =========================================================
+         APPLICATION
+         ========================================================= -->
 
-    <!-- =====================================================
-         SIDEBAR / NAVIGATION
-         ===================================================== -->
+    <div id="app">
 
-    <aside class="sidebar">
+        <!-- =====================================================
+             SIDEBAR / NAVIGATION
+             ===================================================== -->
 
-        <div class="brand">
-            <div class="brand-mark">TP</div>
+        <aside id="sidebar" class="sidebar">
 
-            <div class="brand-text">
-                <strong>Trading Plan</strong>
-                <span>PRO</span>
-            </div>
-        </div>
+            <div class="sidebar-header">
 
-        <nav class="navigation">
+                <div class="app-logo">
+                    <span class="logo-icon">◈</span>
 
-            <button
-                class="nav-item active"
-                data-section="dashboard"
-            >
-                <span>⌂</span>
-                <label>Dashboard</label>
-            </button>
-
-            <button
-                class="nav-item"
-                data-section="plan"
-            >
-                <span>◈</span>
-                <label>Plan de Trading</label>
-            </button>
-
-            <button
-                class="nav-item"
-                data-section="journal"
-            >
-                <span>▤</span>
-                <label>Journal</label>
-            </button>
-
-            <button
-                class="nav-item"
-                data-section="performance"
-            >
-                <span>◒</span>
-                <label>Performance</label>
-            </button>
-
-            <button
-                class="nav-item"
-                data-section="analysis"
-            >
-                <span>⌁</span>
-                <label>Analyse</label>
-            </button>
-
-            <button
-                class="nav-item"
-                data-section="risk"
-            >
-                <span>◉</span>
-                <label>Risk Manager</label>
-            </button>
-
-            <button
-                class="nav-item"
-                data-section="archives"
-            >
-                <span>▥</span>
-                <label>Archives</label>
-            </button>
-
-        </nav>
-
-        <div class="sidebar-bottom">
-
-            <button
-                class="nav-item"
-                data-section="settings"
-            >
-                <span>⚙</span>
-                <label>Paramètres</label>
-            </button>
-
-        </div>
-
-    </aside>
-
-
-    <!-- =====================================================
-         MAIN
-         ===================================================== -->
-
-    <main class="main">
-
-        <header class="topbar">
-
-            <div>
-                <div class="page-kicker">
-                    TRADING PLAN PRO
+                    <div class="logo-text">
+                        <strong>TRADING</strong>
+                        <span>PLAN</span>
+                    </div>
                 </div>
-
-                <h1 id="pageTitle">
-                    Dashboard
-                </h1>
-            </div>
-
-            <div class="topbar-actions">
-
-                <div
-                    id="activeCapitalBadge"
-                    class="capital-badge"
-                >
-                    Aucun capital actif
-                </div>
-
-            </div>
-
-        </header>
-
-
-        <!-- =================================================
-             DASHBOARD
-             ================================================= -->
-
-        <section
-            id="section-dashboard"
-            class="page-section active"
-        >
-
-            <div
-                id="dashboardEmpty"
-                class="empty-state"
-            >
-                <div class="empty-icon">◎</div>
-
-                <h2>Commence par créer ton capital</h2>
-
-                <p>
-                    Le capital actif sera utilisé pour calculer
-                    automatiquement le risque et la taille des positions.
-                </p>
 
                 <button
-                    id="openCreateCapitalFromDashboard"
-                    class="primary-button"
+                    id="closeSidebarBtn"
+                    class="icon-button mobile-only"
+                    type="button"
+                    aria-label="Fermer le menu"
                 >
-                    + Créer un capital
+                    ×
                 </button>
+
             </div>
 
 
-            <div
-                id="dashboardContent"
-                class="hidden"
-            >
+            <nav class="main-navigation">
 
-                <div class="section-heading">
+                <button
+                    class="nav-item active"
+                    data-page="dashboard"
+                    type="button"
+                >
+                    <span class="nav-icon">⌂</span>
+                    <span>Tableau de bord</span>
+                </button>
 
-                    <div>
-                        <span class="section-label">
-                            CAPITAL ACTIF
-                        </span>
 
-                        <h2 id="dashboardCapitalName">
-                            -
-                        </h2>
-                    </div>
+                <button
+                    class="nav-item"
+                    data-page="trades"
+                    type="button"
+                >
+                    <span class="nav-icon">▤</span>
+                    <span>Journal des trades</span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-page="performance"
+                    type="button"
+                >
+                    <span class="nav-icon">◒</span>
+                    <span>Performances</span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-page="capitals"
+                    type="button"
+                >
+                    <span class="nav-icon">◫</span>
+                    <span>Capitaux</span>
+                </button>
+
+
+                <button
+                    class="nav-item"
+                    data-page="analysis"
+                    type="button"
+                >
+                    <span class="nav-icon">⌁</span>
+                    <span>Analyse</span>
+                </button>
+
+            </nav>
+
+
+            <div class="sidebar-bottom">
+
+                <button
+                    class="nav-item"
+                    data-page="settings"
+                    type="button"
+                >
+                    <span class="nav-icon">⚙</span>
+                    <span>Paramètres</span>
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             OVERLAY MOBILE
+             ===================================================== -->
+
+        <div
+            id="sidebarOverlay"
+            class="sidebar-overlay"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- =====================================================
+             CONTENU PRINCIPAL
+             ===================================================== -->
+
+        <main id="mainContent" class="main-content">
+
+
+            <!-- =================================================
+                 TOPBAR
+                 ================================================= -->
+
+            <header class="topbar">
+
+                <div class="topbar-left">
 
                     <button
-                        id="openAddTradeFromDashboard"
-                        class="primary-button"
+                        id="openSidebarBtn"
+                        class="icon-button mobile-only"
+                        type="button"
+                        aria-label="Ouvrir le menu"
                     >
-                        + Ajouter un trade
+                        ☰
+                    </button>
+
+
+                    <div class="page-heading">
+
+                        <span
+                            id="pageEyebrow"
+                            class="page-eyebrow"
+                        >
+                            PLAN DE TRADING
+                        </span>
+
+                        <h1 id="pageTitle">
+                            Tableau de bord
+                        </h1>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <button
+                        id="themeToggleBtn"
+                        class="icon-button"
+                        type="button"
+                        aria-label="Changer le thème"
+                        title="Changer le thème"
+                    >
+                        ◐
+                    </button>
+
+
+                    <button
+                        id="addTradeTopBtn"
+                        class="primary-button"
+                        type="button"
+                    >
+                        <span>＋</span>
+                        <span>Nouveau trade</span>
                     </button>
 
                 </div>
 
-
-                <div class="stats-grid">
-
-                    <article class="stat-card featured">
-
-                        <span>Solde actuel</span>
-
-                        <strong id="dashboardBalance">
-                            $0.00
-                        </strong>
-
-                        <small id="dashboardProfit">
-                            +$0.00
-                        </small>
-
-                    </article>
+            </header>
 
 
-                    <article class="stat-card">
+            <!-- =================================================
+                 PAGES
+                 ================================================= -->
 
-                        <span>Risque / trade</span>
-
-                        <strong id="dashboardRiskPercent">
-                            0%
-                        </strong>
-
-                        <small id="dashboardRiskMoney">
-                            $0.00
-                        </small>
-
-                    </article>
+            <div id="pageContainer" class="page-container">
 
 
-                    <article class="stat-card">
+                <!-- =============================================
+                     PAGE : TABLEAU DE BORD
+                     ============================================= -->
 
-                        <span>Trades</span>
+                <section
+                    id="page-dashboard"
+                    class="page active"
+                    data-page-content="dashboard"
+                >
 
-                        <strong id="dashboardTrades">
-                            0
-                        </strong>
+                    <div class="section-header">
 
-                        <small id="dashboardWinrate">
-                            Winrate : 0%
-                        </small>
+                        <div>
+                            <span class="section-kicker">
+                                CAPITAL ACTIF
+                            </span>
 
-                    </article>
-
-
-                    <article class="stat-card">
-
-                        <span>RR moyen</span>
-
-                        <strong id="dashboardAverageRR">
-                            0.00
-                        </strong>
-
-                        <small>
-                            trades clôturés
-                        </small>
-
-                    </article>
-
-                </div>
-
-
-                <div class="content-grid">
-
-                    <article class="panel">
-
-                        <div class="panel-header">
-                            <div>
-                                <span class="section-label">
-                                    CAPITAL
-                                </span>
-
-                                <h3>Résumé</h3>
-                            </div>
+                            <h2>
+                                Vue d'ensemble
+                            </h2>
                         </div>
 
-                        <div class="detail-list">
+                        <button
+                            id="dashboardAddTradeBtn"
+                            class="primary-button"
+                            type="button"
+                        >
+                            ＋ Ajouter un trade
+                        </button>
+
+                    </div>
+
+
+                    <!-- Capital actif -->
+
+                    <div class="active-capital-banner">
+
+                        <div class="capital-identity">
+
+                            <span class="status-dot"></span>
+
+                            <div>
+                                <span class="label">
+                                    CAPITAL ACTIF
+                                </span>
+
+                                <strong id="activeCapitalName">
+                                    Aucun capital
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="capital-banner-values">
 
                             <div>
                                 <span>Capital initial</span>
-                                <strong id="dashboardInitialCapital">
+                                <strong id="activeCapitalInitial">
                                     $0.00
                                 </strong>
                             </div>
 
                             <div>
                                 <span>Solde actuel</span>
-                                <strong id="dashboardCurrentBalance">
+                                <strong id="activeCapitalBalance">
                                     $0.00
                                 </strong>
                             </div>
 
                             <div>
-                                <span>Profit / Perte</span>
-                                <strong id="dashboardTotalProfit">
+                                <span>Risque / trade</span>
+                                <strong id="activeCapitalRisk">
                                     $0.00
-                                </strong>
-                            </div>
-
-                            <div>
-                                <span>Risque monétaire</span>
-                                <strong id="dashboardRiskAmount">
-                                    $0.00
-                                </strong>
-                            </div>
-
-                            <div>
-                                <span>Objectif</span>
-                                <strong id="dashboardObjective">
-                                    -
                                 </strong>
                             </div>
 
                         </div>
 
-                    </article>
+                    </div>
 
+
+                    <!-- Statistiques principales -->
+
+                    <div class="stats-grid">
+
+                        <article class="stat-card">
+
+                            <span class="stat-label">
+                                PROFIT / PERTE
+                            </span>
+
+                            <strong
+                                id="statProfit"
+                                class="stat-value"
+                            >
+                                $0.00
+                            </strong>
+
+                            <span
+                                id="statProfitPercent"
+                                class="stat-secondary"
+                            >
+                                0.00 %
+                            </span>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <span class="stat-label">
+                                WINRATE
+                            </span>
+
+                            <strong
+                                id="statWinrate"
+                                class="stat-value"
+                            >
+                                0.00 %
+                            </strong>
+
+                            <span
+                                id="statWinLoss"
+                                class="stat-secondary"
+                            >
+                                0W / 0L
+                            </span>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <span class="stat-label">
+                                RR MOYEN
+                            </span>
+
+                            <strong
+                                id="statAverageRR"
+                                class="stat-value"
+                            >
+                                0.00
+                            </strong>
+
+                            <span class="stat-secondary">
+                                trades clôturés
+                            </span>
+
+                        </article>
+
+
+                        <article class="stat-card">
+
+                            <span class="stat-label">
+                                TOTAL TRADES
+                            </span>
+
+                            <strong
+                                id="statTradeCount"
+                                class="stat-value"
+                            >
+                                0
+                            </strong>
+
+                            <span
+                                id="statBreakEven"
+                                class="stat-secondary"
+                            >
+                                0 BE
+                            </span>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- Graphique + résumé -->
+
+                    <div class="dashboard-grid">
+
+
+                        <article class="panel chart-panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <span class="section-kicker">
+                                        ÉVOLUTION
+                                    </span>
+
+                                    <h3>
+                                        Courbe du capital
+                                    </h3>
+                                </div>
+
+
+                                <select
+                                    id="dashboardChartPeriod"
+                                    class="select-control"
+                                >
+                                    <option value="all">
+                                        Tout
+                                    </option>
+
+                                    <option value="year">
+                                        Année
+                                    </option>
+
+                                    <option value="month">
+                                        Mois
+                                    </option>
+
+                                    <option value="week">
+                                        Semaine
+                                    </option>
+
+                                    <option value="day">
+                                        Aujourd'hui
+                                    </option>
+                                </select>
+
+                            </div>
+
+
+                            <div
+                                id="capitalChart"
+                                class="chart-container"
+                            >
+
+                                <div class="empty-state">
+
+                                    <span class="empty-icon">
+                                        ◒
+                                    </span>
+
+                                    <strong>
+                                        Pas encore de données
+                                    </strong>
+
+                                    <span>
+                                        Ajoutez votre premier trade
+                                        pour commencer à suivre
+                                        l'évolution du capital.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <span class="section-kicker">
+                                        ACTIVITÉ
+                                    </span>
+
+                                    <h3>
+                                        Derniers trades
+                                    </h3>
+                                </div>
+
+                                <button
+                                    class="text-button"
+                                    data-page="trades"
+                                    type="button"
+                                >
+                                    Voir tout →
+                                </button>
+
+                            </div>
+
+
+                            <div
+                                id="recentTrades"
+                                class="recent-trades"
+                            >
+
+                                <div class="empty-state compact">
+
+                                    <span class="empty-icon">
+                                        ▤
+                                    </span>
+
+                                    <strong>
+                                        Aucun trade
+                                    </strong>
+
+                                    <span>
+                                        Vos derniers trades
+                                        apparaîtront ici.
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- Résumé des performances -->
+
+                    <div class="dashboard-grid">
+
+
+                        <article class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <span class="section-kicker">
+                                        SETUPS
+                                    </span>
+
+                                    <h3>
+                                        Performance des setups
+                                    </h3>
+                                </div>
+
+                                <button
+                                    class="text-button"
+                                    data-page="analysis"
+                                    type="button"
+                                >
+                                    Analyse →
+                                </button>
+
+                            </div>
+
+
+                            <div
+                                id="setupPerformancePreview"
+                                class="performance-preview"
+                            >
+
+                                <div class="empty-state compact">
+                                    <strong>
+                                        Pas encore de données
+                                    </strong>
+
+                                    <span>
+                                        Les performances apparaîtront
+                                        après vos premiers trades.
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <span class="section-kicker">
+                                        ACTIFS
+                                    </span>
+
+                                    <h3>
+                                        Performance par actif
+                                    </h3>
+                                </div>
+
+                                <button
+                                    class="text-button"
+                                    data-page="analysis"
+                                    type="button"
+                                >
+                                    Analyse →
+                                </button>
+
+                            </div>
+
+
+                            <div
+                                id="assetPerformancePreview"
+                                class="performance-preview"
+                            >
+
+                                <div class="empty-state compact">
+                                    <strong>
+                                        Pas encore de données
+                                    </strong>
+
+                                    <span>
+                                        Les actifs seront analysés
+                                        automatiquement.
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =============================================
+                     PAGE : JOURNAL DES TRADES
+                     ============================================= -->
+
+                <section
+                    id="page-trades"
+                    class="page"
+                    data-page-content="trades"
+                >
+
+                    <div class="section-header">
+
+                        <div>
+                            <span class="section-kicker">
+                                JOURNAL
+                            </span>
+
+                            <h2>
+                                Mes trades
+                            </h2>
+
+                            <p class="section-description">
+                                Historique complet des trades du
+                                capital sélectionné.
+                            </p>
+                        </div>
+
+                        <button
+                            id="tradesAddBtn"
+                            class="primary-button"
+                            type="button"
+                        >
+                            ＋ Nouveau trade
+                        </button>
+
+                    </div>
+
+
+                    <div class="toolbar">
+
+                        <div class="filter-group">
+
+                            <select
+                                id="tradePeriodFilter"
+                                class="select-control"
+                            >
+                                <option value="all">
+                                    Toutes les périodes
+                                </option>
+
+                                <option value="today">
+                                    Aujourd'hui
+                                </option>
+
+                                <option value="week">
+                                    Cette semaine
+                                </option>
+
+                                <option value="month">
+                                    Ce mois
+                                </option>
+
+                                <option value="year">
+                                    Cette année
+                                </option>
+                            </select>
+
+
+                            <select
+                                id="tradeAssetFilter"
+                                class="select-control"
+                            >
+                                <option value="all">
+                                    Tous les actifs
+                                </option>
+                            </select>
+
+
+                            <select
+                                id="tradeSetupFilter"
+                                class="select-control"
+                            >
+                                <option value="all">
+                                    Tous les setups
+                                </option>
+                            </select>
+
+
+                            <select
+                                id="tradeResultFilter"
+                                class="select-control"
+                            >
+                                <option value="all">
+                                    Tous les résultats
+                                </option>
+
+                                <option value="TP">
+                                    TP
+                                </option>
+
+                                <option value="SL">
+                                    SL
+                                </option>
+
+                                <option value="BE">
+                                    BE
+                                </option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="panel table-panel">
+
+                        <div class="table-wrapper">
+
+                            <table class="trades-table">
+
+                                <thead>
+                                    <tr>
+
+                                        <th>Date</th>
+                                        <th>Actif</th>
+                                        <th>Position</th>
+                                        <th>Lot</th>
+                                        <th>Entry</th>
+                                        <th>SL</th>
+                                        <th>TP</th>
+                                        <th>RR</th>
+                                        <th>Pips</th>
+                                        <th>Setup</th>
+                                        <th>Résultat</th>
+                                        <th>P/L</th>
+                                        <th></th>
+
+                                    </tr>
+                                </thead>
+
+
+                                <tbody id="tradesTableBody">
+
+                                    <tr class="empty-table-row">
+
+                                        <td colspan="13">
+
+                                            <div class="empty-state">
+
+                                                <span class="empty-icon">
+                                                    ▤
+                                                </span>
+
+                                                <strong>
+                                                    Aucun trade enregistré
+                                                </strong>
+
+                                                <span>
+                                                    Ajoutez votre premier
+                                                    trade pour commencer.
+                                                </span>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =============================================
+                     PAGE : PERFORMANCES
+                     ============================================= -->
+
+                <section
+                    id="page-performance"
+                    class="page"
+                    data-page-content="performance"
+                >
+
+                    <div class="section-header">
+
+                        <div>
+                            <span class="section-kicker">
+                                PERFORMANCE
+                            </span>
+
+                            <h2>
+                                Performance des capitaux
+                            </h2>
+
+                            <p class="section-description">
+                                Comparez l'évolution de votre capital
+                                actif et de vos capitaux archivés.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- Sélecteur de capital -->
+
+                    <div class="capital-selector-panel panel">
+
+                        <div class="capital-selector-info">
+
+                            <span class="section-kicker">
+                                CAPITAL SÉLECTIONNÉ
+                            </span>
+
+                            <strong id="performanceCapitalName">
+                                Capital actif
+                            </strong>
+
+                        </div>
+
+
+                        <select
+                            id="performanceCapitalSelector"
+                            class="select-control"
+                        >
+
+                            <option value="active">
+                                Capital actif
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- KPIs performance -->
+
+                    <div class="stats-grid performance-stats-grid">
+
+                        <article class="stat-card">
+                            <span class="stat-label">
+                                CAPITAL INITIAL
+                            </span>
+
+                            <strong
+                                id="performanceInitial"
+                                class="stat-value"
+                            >
+                                $0.00
+                            </strong>
+                        </article>
+
+
+                        <article class="stat-card">
+                            <span class="stat-label">
+                                CAPITAL FINAL
+                            </span>
+
+                            <strong
+                                id="performanceFinal"
+                                class="stat-value"
+                            >
+                                $0.00
+                            </strong>
+                        </article>
+
+
+                        <article class="stat-card">
+                            <span class="stat-label">
+                                PROFIT / PERTE
+                            </span>
+
+                            <strong
+                                id="performanceProfit"
+                                class="stat-value"
+                            >
+                                $0.00
+                            </strong>
+                        </article>
+
+
+                        <article class="stat-card">
+                            <span class="stat-label">
+                                RENDEMENT
+                            </span>
+
+                            <strong
+                                id="performanceReturn"
+                                class="stat-value"
+                            >
+                                0.00 %
+                            </strong>
+                        </article>
+
+                    </div>
+
+
+                    <div class="dashboard-grid">
+
+
+                        <article class="panel chart-panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <span class="section-kicker">
+                                        HISTORIQUE
+                                    </span>
+
+                                    <h3>
+                                        Évolution du capital
+                                    </h3>
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                id="performanceChart"
+                                class="chart-container"
+                            >
+
+                                <div class="empty-state">
+                                    <span class="empty-icon">
+                                        ◒
+                                    </span>
+
+                                    <strong>
+                                        Pas encore de données
+                                    </strong>
+
+                                    <span>
+                                        L'évolution apparaîtra ici.
+                                    </span>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <span class="section-kicker">
+                                        RÉSULTATS
+                                    </span>
+
+                                    <h3>
+                                        Statistiques
+                                    </h3>
+                                </div>
+
+                            </div>
+
+
+                            <div class="metric-list">
+
+                                <div class="metric-row">
+                                    <span>Trades</span>
+                                    <strong id="performanceTrades">
+                                        0
+                                    </strong>
+                                </div>
+
+                                <div class="metric-row">
+                                    <span>Winrate</span>
+                                    <strong id="performanceWinrate">
+                                        0.00 %
+                                    </strong>
+                                </div>
+
+                                <div class="metric-row">
+                                    <span>RR moyen</span>
+                                    <strong id="performanceRR">
+                                        0.00
+                                    </strong>
+                                </div>
+
+                                <div class="metric-row">
+                                    <span>Pips</span>
+                                    <strong id="performancePips">
+                                        0
+                                    </strong>
+                                </div>
+
+                                <div class="metric-row">
+                                    <span>Risque / trade</span>
+                                    <strong id="performanceRisk">
+                                        $0.00
+                                    </strong>
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- Comparaison des capitaux -->
 
                     <article class="panel">
 
                         <div class="panel-header">
+
                             <div>
-                                <span class="section-label">
-                                    ACTIVITÉ
+                                <span class="section-kicker">
+                                    HISTORIQUE DES CAPITAUX
                                 </span>
 
-                                <h3>Derniers trades</h3>
+                                <h3>
+                                    Capitaux actifs et archivés
+                                </h3>
                             </div>
+
                         </div>
 
-                        <div id="dashboardRecentTrades">
-                            <div class="mini-empty">
-                                Aucun trade enregistré.
+
+                        <div
+                            id="capitalPerformanceList"
+                            class="capital-performance-list"
+                        >
+
+                            <div class="empty-state compact">
+
+                                <span class="empty-icon">
+                                    ◫
+                                </span>
+
+                                <strong>
+                                    Aucun historique
+                                </strong>
+
+                                <span>
+                                    Vos capitaux apparaîtront ici.
+                                </span>
+
                             </div>
+
                         </div>
 
                     </article>
 
-                </div>
+                </section>
+
+
+                <!-- =============================================
+                     PAGE : CAPITAUX
+                     ============================================= -->
+
+                <section
+                    id="page-capitals"
+                    class="page"
+                    data-page-content="capitals"
+                >
+
+                    <div class="section-header">
+
+                        <div>
+                            <span class="section-kicker">
+                                GESTION
+                            </span>
+
+                            <h2>
+                                Mes capitaux
+                            </h2>
+
+                            <p class="section-description">
+                                Créez, gérez et archivez vos différents
+                                capitaux de trading.
+                            </p>
+                        </div>
+
+
+                        <button
+                            id="createCapitalBtn"
+                            class="primary-button"
+                            type="button"
+                        >
+                            ＋ Nouveau capital
+                        </button>
+
+                    </div>
+
+
+                    <!-- Capital actif -->
+
+                    <div class="capital-section">
+
+                        <div class="subsection-header">
+
+                            <div>
+                                <span class="section-kicker">
+                                    ACTIF
+                                </span>
+
+                                <h3>
+                                    Capital actuellement utilisé
+                                </h3>
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="activeCapitalCard"
+                            class="capital-card active"
+                        >
+
+                            <div class="empty-state compact">
+
+                                <span class="empty-icon">
+                                    $
+                                </span>
+
+                                <strong>
+                                    Aucun capital actif
+                                </strong>
+
+                                <span>
+                                    Créez votre premier capital
+                                    pour commencer.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Capitaux archivés -->
+
+                    <div class="capital-section">
+
+                        <div class="subsection-header">
+
+                            <div>
+                                <span class="section-kicker">
+                                    ARCHIVES
+                                </span>
+
+                                <h3>
+                                    Capitaux archivés
+                                </h3>
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            id="archivedCapitalGrid"
+                            class="capital-grid"
+                        >
+
+                            <div class="empty-state compact">
+
+                                <span class="empty-icon">
+                                    ◫
+                                </span>
+
+                                <strong>
+                                    Aucun capital archivé
+                                </strong>
+
+                                <span>
+                                    Les capitaux archivés resteront
+                                    disponibles avec leur historique.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =============================================
+                     PAGE : ANALYSE
+                     ============================================= -->
+
+                <section
+                    id="page-analysis"
+                    class="page"
+                    data-page-content="analysis"
+                >
+
+                    <div class="section-header">
+
+                        <div>
+                            <span class="section-kicker">
+                                ANALYSE
+                            </span>
+
+                            <h2>
+                                Analyse de performance
+                            </h2>
+
+                            <p class="section-description">
+                                Analysez vos résultats par setup,
+                                actif et période.
+                            </p>
+                        </div>
+
+
+                        <select
+                            id="analysisPeriod"
+                            class="select-control"
+                        >
+                            <option value="all">
+                                Toutes les périodes
+                            </option>
+
+                            <option value="year">
+                                Cette année
+                            </option>
+
+                            <option value="month">
+                                Ce mois
+                            </option>
+
+                            <option value="week">
+                                Cette semaine
+                            </option>
+
+                            <option value="today">
+                                Aujourd'hui
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <!-- Performance setups -->
+
+                    <article class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="section-kicker">
+                                    SETUPS
+                                </span>
+
+                                <h3>
+                                    Performance par setup
+                                </h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="table-wrapper">
+
+                            <table class="analysis-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Setup</th>
+                                        <th>Trades</th>
+                                        <th>Winrate</th>
+                                        <th>Pips</th>
+                                        <th>P/L</th>
+                                        <th>RR moyen</th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody id="setupAnalysisBody">
+
+                                    <tr class="empty-table-row">
+
+                                        <td colspan="6">
+
+                                            <div class="empty-state compact">
+
+                                                <strong>
+                                                    Aucune donnée
+                                                </strong>
+
+                                                <span>
+                                                    Les statistiques
+                                                    apparaîtront après vos
+                                                    premiers trades.
+                                                </span>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Performance actifs -->
+
+                    <article class="panel">
+
+                        <div class="panel-header">
+
+                            <div>
+                                <span class="section-kicker">
+                                    ACTIFS
+                                </span>
+
+                                <h3>
+                                    Performance par actif
+                                </h3>
+                            </div>
+
+                        </div>
+
+
+                        <div class="table-wrapper">
+
+                            <table class="analysis-table">
+
+                                <thead>
+                                    <tr>
+                                        <th>Actif</th>
+                                        <th>Trades</th>
+                                        <th>Winrate</th>
+                                        <th>Pips</th>
+                                        <th>P/L</th>
+                                        <th>RR moyen</th>
+                                    </tr>
+                                </thead>
+
+
+                                <tbody id="assetAnalysisBody">
+
+                                    <tr class="empty-table-row">
+
+                                        <td colspan="6">
+
+                                            <div class="empty-state compact">
+
+                                                <strong>
+                                                    Aucune donnée
+                                                </strong>
+
+                                                <span>
+                                                    Les statistiques
+                                                    apparaîtront après vos
+                                                    premiers trades.
+                                                </span>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </article>
+
+                </section>
+
+
+                <!-- =============================================
+                     PAGE : PARAMÈTRES
+                     ============================================= -->
+
+                <section
+                    id="page-settings"
+                    class="page"
+                    data-page-content="settings"
+                >
+
+                    <div class="section-header">
+
+                        <div>
+                            <span class="section-kicker">
+                                CONFIGURATION
+                            </span>
+
+                            <h2>
+                                Paramètres
+                            </h2>
+
+                            <p class="section-description">
+                                Configuration générale de l'application.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-grid">
+
+                        <article class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <span class="section-kicker">
+                                        INTERFACE
+                                    </span>
+
+                                    <h3>
+                                        Apparence
+                                    </h3>
+                                </div>
+
+                            </div>
+
+
+                            <div class="setting-row">
+
+                                <div>
+                                    <strong>
+                                        Thème sombre
+                                    </strong>
+
+                                    <span>
+                                        Utiliser l'interface sombre.
+                                    </span>
+                                </div>
+
+
+                                <button
+                                    id="settingsThemeToggle"
+                                    class="secondary-button"
+                                    type="button"
+                                >
+                                    Changer
+                                </button>
+
+                            </div>
+
+                        </article>
+
+
+                        <article class="panel">
+
+                            <div class="panel-header">
+
+                                <div>
+                                    <span class="section-kicker">
+                                        DONNÉES
+                                    </span>
+
+                                    <h3>
+                                        Gestion des données
+                                    </h3>
+                                </div>
+
+                            </div>
+
+
+                            <div class="setting-row">
+
+                                <div>
+                                    <strong>
+                                        Exporter les données
+                                    </strong>
+
+                                    <span>
+                                        Sauvegarder votre plan de trading.
+                                    </span>
+                                </div>
+
+
+                                <button
+                                    id="exportDataBtn"
+                                    class="secondary-button"
+                                    type="button"
+                                >
+                                    Exporter
+                                </button>
+
+                            </div>
+
+
+                            <div class="setting-row">
+
+                                <div>
+                                    <strong>
+                                        Importer les données
+                                    </strong>
+
+                                    <span>
+                                        Restaurer une sauvegarde.
+                                    </span>
+                                </div>
+
+
+                                <button
+                                    id="importDataBtn"
+                                    class="secondary-button"
+                                    type="button"
+                                >
+                                    Importer
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
 
             </div>
 
-        </section>
+        </main>
+
+    </div>
 
 
-        <!-- =================================================
-             PLAN
-             ================================================= -->
+    <!-- =========================================================
+         MODALE : AJOUTER UN TRADE
+         ========================================================= -->
 
-        <section
-            id="section-plan"
-            class="page-section"
+    <div
+        id="tradeModal"
+        class="modal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-overlay" data-close-modal></div>
+
+
+        <div
+            class="modal-content trade-modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="tradeModalTitle"
         >
 
-            <div class="section-heading">
+            <div class="modal-header">
 
                 <div>
-                    <span class="section-label">
-                        STRATÉGIE
-                    </span>
 
-                    <h2>Plan de Trading</h2>
-                </div>
-
-            </div>
-
-            <div class="panel">
-
-                <div class="coming-soon">
-
-                    <div class="coming-icon">◈</div>
-
-                    <h3>Structure du plan</h3>
-
-                    <p>
-                        Cette partie accueillera les règles,
-                        marchés, sessions, timeframes, setups,
-                        conditions d'entrée et règles psychologiques.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             JOURNAL
-             ================================================= -->
-
-        <section
-            id="section-journal"
-            class="page-section"
-        >
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">
+                    <span class="section-kicker">
                         JOURNAL
                     </span>
 
-                    <h2>Journal de Trade</h2>
+                    <h2 id="tradeModalTitle">
+                        Ajouter un trade
+                    </h2>
+
                 </div>
 
+
                 <button
-                    id="openAddTradeFromJournal"
-                    class="primary-button"
+                    class="icon-button"
+                    data-close-modal
+                    type="button"
+                    aria-label="Fermer"
                 >
-                    + Ajouter un trade
+                    ×
                 </button>
 
             </div>
 
 
-            <div class="panel">
+            <form id="tradeForm" novalidate>
 
-                <div
-                    id="journalEmpty"
-                    class="empty-state compact"
-                >
 
-                    <div class="empty-icon">▤</div>
+                <!-- Capital -->
 
-                    <h3>Aucun trade</h3>
+                <div class="form-section">
 
-                    <p>
-                        Tes trades enregistrés apparaîtront ici.
-                    </p>
+                    <div class="form-section-title">
+                        <span>01</span>
+                        <strong>Capital & marché</strong>
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="tradeCapital">
+                                Capital
+                            </label>
+
+                            <select
+                                id="tradeCapital"
+                                name="capitalId"
+                                required
+                            >
+
+                                <option value="">
+                                    Sélectionner
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="tradeAsset">
+                                Actif
+                            </label>
+
+                            <select
+                                id="tradeAsset"
+                                name="asset"
+                                required
+                            >
+
+                                <option value="">
+                                    Sélectionner
+                                </option>
+
+                                <option value="XAUUSD">
+                                    XAUUSD
+                                </option>
+
+                                <option value="EURUSD">
+                                    EURUSD
+                                </option>
+
+                                <option value="USDCAD">
+                                    USDCAD
+                                </option>
+
+                                <option value="NZDUSD">
+                                    NZDUSD
+                                </option>
+
+                                <option value="AUDUSD">
+                                    AUDUSD
+                                </option>
+
+                                <option value="USDJPY">
+                                    USDJPY
+                                </option>
+
+                                <option value="GBPUSD">
+                                    GBPUSD
+                                </option>
+
+                                <option value="USDCHF">
+                                    USDCHF
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="tradePosition">
+                                Position
+                            </label>
+
+                            <select
+                                id="tradePosition"
+                                name="position"
+                                required
+                            >
+
+                                <option value="">
+                                    Sélectionner
+                                </option>
+
+                                <option value="BUY">
+                                    BUY
+                                </option>
+
+                                <option value="SELL">
+                                    SELL
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="tradeDate">
+                                Date du trade
+                            </label>
+
+                            <input
+                                id="tradeDate"
+                                name="tradeDate"
+                                type="datetime-local"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Prix -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+                        <span>02</span>
+                        <strong>Paramètres de position</strong>
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="tradeEntry">
+                                Prix d'entrée
+                            </label>
+
+                            <input
+                                id="tradeEntry"
+                                name="entry"
+                                type="number"
+                                step="any"
+                                placeholder="Ex. 2000.00"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="tradeSL">
+                                Stop Loss
+                            </label>
+
+                            <input
+                                id="tradeSL"
+                                name="sl"
+                                type="number"
+                                step="any"
+                                placeholder="Prix du SL"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="tradeRR">
+                                RR
+                            </label>
+
+                            <input
+                                id="tradeRR"
+                                name="rr"
+                                type="number"
+                                min="0.1"
+                                step="0.1"
+                                placeholder="Ex. 2"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group calculated-field">
+
+                            <label for="tradeTP">
+                                Take Profit
+                            </label>
+
+                            <input
+                                id="tradeTP"
+                                name="tp"
+                                type="number"
+                                step="any"
+                                placeholder="Calculé automatiquement"
+                                readonly
+                            >
+
+                            <small>
+                                Calculé automatiquement selon le RR.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Gestion du trade -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+                        <span>03</span>
+                        <strong>Gestion & résultat</strong>
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group calculated-field">
+
+                            <label for="tradeLot">
+                                Lot
+                            </label>
+
+                            <input
+                                id="tradeLot"
+                                name="lot"
+                                type="number"
+                                step="0.01"
+                                placeholder="Calculé automatiquement"
+                                readonly
+                            >
+
+                            <small>
+                                Calculé selon le risque du capital
+                                et la distance du SL.
+                            </small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="tradeBE">
+                                Break Even
+                            </label>
+
+                            <input
+                                id="tradeBE"
+                                name="be"
+                                type="number"
+                                step="any"
+                                placeholder="Prix du BE si utilisé"
+                            >
+
+                            <small>
+                                Saisi manuellement.
+                            </small>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="tradeExit">
+                                Prix de sortie
+                            </label>
+
+                            <input
+                                id="tradeExit"
+                                name="exit"
+                                type="number"
+                                step="any"
+                                placeholder="Prix réel de sortie"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="tradeResult">
+                                Résultat
+                            </label>
+
+                            <select
+                                id="tradeResult"
+                                name="result"
+                                required
+                            >
+
+                                <option value="">
+                                    Sélectionner
+                                </option>
+
+                                <option value="TP">
+                                    TP
+                                </option>
+
+                                <option value="SL">
+                                    SL
+                                </option>
+
+                                <option value="BE">
+                                    BE
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Résultats calculés -->
+
+                    <div class="calculation-preview">
+
+                        <div class="calculation-item">
+
+                            <span>Pips</span>
+
+                            <strong id="tradePipsPreview">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="calculation-item">
+
+                            <span>Risque</span>
+
+                            <strong id="tradeRiskPreview">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="calculation-item">
+
+                            <span>P/L</span>
+
+                            <strong id="tradePLPreview">
+                                —
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Setup -->
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+                        <span>04</span>
+                        <strong>Setup</strong>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tradeSetup">
+                            Setup utilisé
+                        </label>
+
+                        <select
+                            id="tradeSetup"
+                            name="setup"
+                            required
+                        >
+
+                            <option value="">
+                                Sélectionner un setup
+                            </option>
+
+                            <option value="ZS OA">
+                                ZS OA
+                            </option>
+
+                            <option value="LDP+FIBO 50">
+                                LDP+FIBO 50
+                            </option>
+
+                            <option value="LDP+QM">
+                                LDP+QM
+                            </option>
+
+                            <option value="SSM1">
+                                SSM1
+                            </option>
+
+                            <option value="SSM2">
+                                SSM2
+                            </option>
+
+                            <option value="SSM3">
+                                SSM3
+                            </option>
+
+                            <option value="SBM1">
+                                SBM1
+                            </option>
+
+                            <option value="SBM2">
+                                SBM2
+                            </option>
+
+                            <option value="SBM3">
+                                SBM3
+                            </option>
+
+                            <option value="OB">
+                                OB
+                            </option>
+
+                            <option value="BB">
+                                BB
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="tradeComment">
+                            Commentaire
+                        </label>
+
+                        <textarea
+                            id="tradeComment"
+                            name="comment"
+                            rows="4"
+                            placeholder="Notes sur le trade..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Actions -->
+
+                <div class="modal-actions">
 
                     <button
-                        id="openAddTradeFromEmpty"
+                        type="button"
+                        class="secondary-button"
+                        data-close-modal
+                    >
+                        Annuler
+                    </button>
+
+
+                    <button
+                        type="submit"
                         class="primary-button"
                     >
-                        + Ajouter un trade
+                        Enregistrer le trade
                     </button>
 
                 </div>
 
+            </form>
 
-                <div
-                    id="journalTableWrapper"
-                    class="table-wrapper hidden"
-                >
+        </div>
 
-                    <table>
-
-                        <thead>
-
-                            <tr>
-                                <th>Date</th>
-                                <th>Actif</th>
-                                <th>Position</th>
-                                <th>Setup</th>
-                                <th>Entry</th>
-                                <th>SL</th>
-                                <th>TP</th>
-                                <th>RR</th>
-                                <th>Résultat</th>
-                                <th>P&L</th>
-                            </tr>
-
-                        </thead>
-
-                        <tbody id="journalTableBody"></tbody>
-
-                    </table>
-
-                </div>
-
-            </div>
-
-        </section>
+    </div>
 
 
-        <!-- =================================================
-             PERFORMANCE
-             ================================================= -->
+    <!-- =========================================================
+         MODALE : CRÉATION D'UN CAPITAL
+         ========================================================= -->
 
-        <section
-            id="section-performance"
-            class="page-section"
+    <div
+        id="capitalModal"
+        class="modal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-overlay" data-close-modal></div>
+
+
+        <div
+            class="modal-content"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="capitalModalTitle"
         >
 
-            <div class="section-heading">
+            <div class="modal-header">
 
                 <div>
-                    <span class="section-label">
-                        STATISTIQUES
+
+                    <span class="section-kicker">
+                        NOUVEAU CAPITAL
                     </span>
 
-                    <h2>Performance</h2>
-                </div>
-
-            </div>
-
-            <div class="stats-grid">
-
-                <article class="stat-card">
-                    <span>Winrate</span>
-                    <strong id="performanceWinrate">0%</strong>
-                </article>
-
-                <article class="stat-card">
-                    <span>Profit Factor</span>
-                    <strong id="performanceProfitFactor">0.00</strong>
-                </article>
-
-                <article class="stat-card">
-                    <span>Expectancy</span>
-                    <strong id="performanceExpectancy">$0.00</strong>
-                </article>
-
-                <article class="stat-card">
-                    <span>Trades</span>
-                    <strong id="performanceTrades">0</strong>
-                </article>
-
-            </div>
-
-            <div class="panel">
-
-                <div class="coming-soon">
-
-                    <div class="coming-icon">◒</div>
-
-                    <h3>Analyse de performance</h3>
-
-                    <p>
-                        Les statistiques détaillées seront construites
-                        à partir du journal réel.
-                    </p>
+                    <h2 id="capitalModalTitle">
+                        Créer un capital
+                    </h2>
 
                 </div>
 
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             ANALYSE
-             ================================================= -->
-
-        <section
-            id="section-analysis"
-            class="page-section"
-        >
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">
-                        ANALYSE
-                    </span>
-
-                    <h2>Analyse</h2>
-                </div>
-
-            </div>
-
-            <div class="panel">
-
-                <div class="coming-soon">
-
-                    <div class="coming-icon">⌁</div>
-
-                    <h3>Analyse avancée</h3>
-
-                    <p>
-                        Performance par setup, actif, session,
-                        timeframe et autres critères.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             RISK MANAGER
-             ================================================= -->
-
-        <section
-            id="section-risk"
-            class="page-section"
-        >
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">
-                        RISK MANAGEMENT
-                    </span>
-
-                    <h2>Risk Manager</h2>
-                </div>
-
-            </div>
-
-            <div class="panel">
-
-                <div class="coming-soon">
-
-                    <div class="coming-icon">◉</div>
-
-                    <h3>Calculateur de position</h3>
-
-                    <p>
-                        Le moteur de calcul utilisé dans
-                        « Ajouter un trade » sera développé
-                        davantage ici.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =================================================
-             ARCHIVES
-             ================================================= -->
-
-        <section
-            id="section-archives"
-            class="page-section"
-        >
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">
-                        HISTORIQUE
-                    </span>
-
-                    <h2>Capitaux archivés</h2>
-                </div>
 
                 <button
-                    id="openCreateCapitalFromArchives"
-                    class="primary-button"
+                    class="icon-button"
+                    data-close-modal
+                    type="button"
+                    aria-label="Fermer"
                 >
-                    + Nouveau capital
+                    ×
                 </button>
 
             </div>
 
-            <div
-                id="archivesContainer"
-                class="archives-grid"
-            ></div>
 
-        </section>
+            <form id="capitalForm" novalidate>
 
-
-        <!-- =================================================
-             SETTINGS
-             ================================================= -->
-
-        <section
-            id="section-settings"
-            class="page-section"
-        >
-
-            <div class="section-heading">
-
-                <div>
-                    <span class="section-label">
-                        CONFIGURATION
-                    </span>
-
-                    <h2>Paramètres</h2>
-                </div>
-
-            </div>
-
-            <div class="panel">
-
-                <div class="settings-row">
-
-                    <div>
-                        <strong>Stockage</strong>
-                        <span>
-                            Les données sont enregistrées localement
-                            sur cet appareil.
-                        </span>
-                    </div>
-
-                    <span class="status-pill">
-                        LOCAL
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-</div>
-
-
-<!-- =========================================================
-     MODAL : CRÉER CAPITAL
-     ========================================================= -->
-
-<div
-    id="capitalModal"
-    class="modal-overlay hidden"
->
-
-    <div class="modal">
-
-        <div class="modal-header">
-
-            <div>
-                <span class="section-label">
-                    CAPITAL
-                </span>
-
-                <h2>Créer un capital</h2>
-            </div>
-
-            <button
-                class="close-modal"
-                data-close-modal="capitalModal"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <form id="capitalForm">
-
-            <div class="form-group">
-
-                <label for="capitalName">
-                    Nom du capital
-                </label>
-
-                <input
-                    id="capitalName"
-                    type="text"
-                    placeholder="Ex : Compte Principal"
-                    required
-                >
-
-            </div>
-
-
-            <div class="form-grid">
 
                 <div class="form-group">
 
-                    <label for="initialCapital">
-                        Capital initial
+                    <label for="capitalName">
+                        Nom du capital
                     </label>
 
                     <input
-                        id="initialCapital"
-                        type="number"
-                        min="0.01"
-                        step="0.01"
-                        placeholder="100"
+                        id="capitalName"
+                        name="name"
+                        type="text"
+                        placeholder="Ex. Capital Principal"
                         required
                     >
 
                 </div>
 
 
-                <div class="form-group">
+                <div class="form-grid">
 
-                    <label for="capitalCurrency">
-                        Devise
-                    </label>
+                    <div class="form-group">
 
-                    <select id="capitalCurrency">
+                        <label for="capitalInitial">
+                            Capital initial
+                        </label>
 
-                        <option value="USD">
-                            USD ($)
-                        </option>
+                        <input
+                            id="capitalInitial"
+                            name="initial"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="Ex. 100"
+                            required
+                        >
 
-                        <option value="EUR">
-                            EUR (€)
-                        </option>
+                    </div>
 
-                        <option value="GBP">
-                            GBP (£)
-                        </option>
 
-                    </select>
+                    <div class="form-group">
+
+                        <label for="capitalRisk">
+                            Risque par trade
+                        </label>
+
+                        <input
+                            id="capitalRisk"
+                            name="riskPerTrade"
+                            type="number"
+                            min="0"
+                            step="0.01"
+                            placeholder="Ex. 2"
+                            required
+                        >
+
+                    </div>
 
                 </div>
 
-            </div>
+
+                <div class="form-info">
+
+                    <strong>
+                        ⚠️ Paramètre important
+                    </strong>
+
+                    <p>
+                        Le risque par trade sera enregistré avec ce
+                        capital et servira automatiquement au calcul
+                        du lot lors de l'ajout des trades.
+                    </p>
+
+                </div>
 
 
-            <div class="form-group">
+                <div class="modal-actions">
 
-                <label for="riskPercent">
-                    Risque par trade
-                </label>
-
-                <div class="input-with-suffix">
-
-                    <input
-                        id="riskPercent"
-                        type="number"
-                        min="0.01"
-                        max="100"
-                        step="0.01"
-                        placeholder="2"
-                        required
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        data-close-modal
                     >
+                        Annuler
+                    </button>
 
-                    <span>%</span>
+
+                    <button
+                        type="submit"
+                        class="primary-button"
+                    >
+                        Créer le capital
+                    </button>
 
                 </div>
 
-                <small>
-                    Ce risque sera enregistré avec le capital
-                    et utilisé automatiquement pour chaque trade.
-                </small>
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label for="capitalObjective">
-                    Objectif du capital
-                </label>
-
-                <input
-                    id="capitalObjective"
-                    type="number"
-                    min="0"
-                    step="0.01"
-                    placeholder="200"
-                >
-
-            </div>
-
-
-            <div class="modal-preview">
-
-                <span>Risque monétaire initial</span>
-
-                <strong id="capitalRiskPreview">
-                    $0.00
-                </strong>
-
-            </div>
-
-
-            <div class="modal-actions">
-
-                <button
-                    type="button"
-                    class="secondary-button"
-                    data-close-modal="capitalModal"
-                >
-                    Annuler
-                </button>
-
-                <button
-                    type="submit"
-                    class="primary-button"
-                >
-                    Créer le capital
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     MODAL : AJOUTER TRADE
-     ========================================================= -->
-
-<div
-    id="tradeModal"
-    class="modal-overlay hidden"
->
-
-    <div class="modal modal-large">
-
-        <div class="modal-header">
-
-            <div>
-                <span class="section-label">
-                    JOURNAL
-                </span>
-
-                <h2>Ajouter un trade</h2>
-            </div>
-
-            <button
-                class="close-modal"
-                data-close-modal="tradeModal"
-            >
-                ×
-            </button>
+            </form>
 
         </div>
 
-
-        <form id="tradeForm">
-
-            <div
-                id="tradeNoCapitalWarning"
-                class="warning-box hidden"
-            >
-                Aucun capital actif. Crée d'abord un capital.
-            </div>
-
-
-            <div class="form-section">
-
-                <div class="form-section-title">
-                    Informations du trade
-                </div>
-
-                <div class="form-grid">
-
-                    <div class="form-group">
-
-                        <label for="tradeDate">
-                            Date
-                        </label>
-
-                        <input
-                            id="tradeDate"
-                            type="date"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="tradeTime">
-                            Heure
-                        </label>
-
-                        <input
-                            id="tradeTime"
-                            type="time"
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="tradeAsset">
-                            Actif
-                        </label>
-
-                        <select id="tradeAsset" required>
-
-                            <option value="XAUUSD">
-                                XAUUSD
-                            </option>
-
-                            <option value="EURUSD">
-                                EURUSD
-                            </option>
-
-                            <option value="GBPUSD">
-                                GBPUSD
-                            </option>
-
-                            <option value="USDJPY">
-                                USDJPY
-                            </option>
-
-                            <option value="AUDUSD">
-                                AUDUSD
-                            </option>
-
-                            <option value="NZDUSD">
-                                NZDUSD
-                            </option>
-
-                            <option value="USDCAD">
-                                USDCAD
-                            </option>
-
-                            <option value="USDCHF">
-                                USDCHF
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="tradePosition">
-                            Position
-                        </label>
-
-                        <select id="tradePosition" required>
-
-                            <option value="BUY">
-                                BUY
-                            </option>
-
-                            <option value="SELL">
-                                SELL
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="tradeTimeframe">
-                            Timeframe
-                        </label>
-
-                        <select id="tradeTimeframe">
-
-                            <option value="M1">M1</option>
-                            <option value="M5">M5</option>
-                            <option value="M15" selected>M15</option>
-                            <option value="M30">M30</option>
-                            <option value="H1">H1</option>
-                            <option value="H4">H4</option>
-                            <option value="D1">D1</option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="tradeSession">
-                            Session
-                        </label>
-
-                        <select id="tradeSession">
-
-                            <option value="">
-                                Non définie
-                            </option>
-
-                            <option value="Sydney">
-                                Sydney
-                            </option>
-
-                            <option value="Tokyo">
-                                Tokyo
-                            </option>
-
-                            <option value="London">
-                                Londres
-                            </option>
-
-                            <option value="New York">
-                                New York
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-section">
-
-                <div class="form-section-title">
-                    Setup
-                </div>
-
-                <div class="form-group">
-
-                    <label for="tradeSetup">
-                        Setup
-                    </label>
-
-                    <select id="tradeSetup" required>
-
-                        <option value="">
-                            Sélectionner un setup
-                        </option>
-
-                        <option value="ZS OA">
-                            ZS OA
-                        </option>
-
-                        <option value="LDP + FIBO 50">
-                            LDP + FIBO 50
-                        </option>
-
-                        <option value="LDP + QM">
-                            LDP + QM
-                        </option>
-
-                        <option value="SSM1">
-                            SSM1
-                        </option>
-
-                        <option value="SSM2">
-                            SSM2
-                        </option>
-
-                        <option value="SSM3">
-                            SSM3
-                        </option>
-
-                        <option value="SBM1">
-                            SBM1
-                        </option>
-
-                        <option value="SBM2">
-                            SBM2
-                        </option>
-
-                        <option value="SBM3">
-                            SBM3
-                        </option>
-
-                        <option value="OB">
-                            OB
-                        </option>
-
-                        <option value="BB">
-                            BB
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-section">
-
-                <div class="form-section-title">
-                    Gestion du risque
-                </div>
-
-
-                <div class="form-grid">
-
-                    <div class="form-group">
-
-                        <label for="tradeEntry">
-                            Entry
-                        </label>
-
-                        <input
-                            id="tradeEntry"
-                            type="number"
-                            step="any"
-                            placeholder="4450.00"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="tradeSL">
-                            Stop Loss
-                        </label>
-
-                        <input
-                            id="tradeSL"
-                            type="number"
-                            step="any"
-                            placeholder="4440.00"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="tradeRR">
-                            RR choisi
-                        </label>
-
-                        <select id="tradeRR">
-
-                            <option value="1">
-                                1:1
-                            </option>
-
-                            <option value="1.5">
-                                1:1.5
-                            </option>
-
-                            <option value="2" selected>
-                                1:2
-                            </option>
-
-                            <option value="2.5">
-                                1:2.5
-                            </option>
-
-                            <option value="3">
-                                1:3
-                            </option>
-
-                            <option value="4">
-                                1:4
-                            </option>
-
-                            <option value="5">
-                                1:5
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-group calculated-field">
-
-                        <label>
-                            Risque du capital
-                        </label>
-
-                        <div
-                            id="tradeRiskDisplay"
-                            class="calculated-value"
-                        >
-                            $0.00
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group calculated-field">
-
-                        <label>
-                            Distance SL
-                        </label>
-
-                        <div
-                            id="tradeSLDistanceDisplay"
-                            class="calculated-value"
-                        >
-                            0.00
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group calculated-field">
-
-                        <label>
-                            Pips SL
-                        </label>
-
-                        <div
-                            id="tradeSLPipsDisplay"
-                            class="calculated-value"
-                        >
-                            0
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group calculated-field highlight-field">
-
-                        <label>
-                            Lot automatique
-                        </label>
-
-                        <div
-                            id="tradeLotDisplay"
-                            class="calculated-value"
-                        >
-                            0.00
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group calculated-field highlight-field">
-
-                        <label>
-                            TP automatique
-                        </label>
-
-                        <div
-                            id="tradeTPDisplay"
-                            class="calculated-value"
-                        >
-                            -
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div
-                    id="tradeCalculationMessage"
-                    class="calculation-message"
-                >
-                    Renseigne Entry et SL pour calculer automatiquement
-                    le lot et le TP.
-                </div>
-
-            </div>
-
-
-            <div class="form-section">
-
-                <div class="form-section-title">
-                    Résultat
-                </div>
-
-
-                <div class="form-grid">
-
-                    <div class="form-group">
-
-                        <label for="tradeResult">
-                            Résultat
-                        </label>
-
-                        <select id="tradeResult">
-
-                            <option value="OPEN">
-                                En cours
-                            </option>
-
-                            <option value="TP">
-                                TP
-                            </option>
-
-                            <option value="SL">
-                                SL
-                            </option>
-
-                            <option value="BE">
-                                BE
-                            </option>
-
-                            <option value="MANUAL">
-                                Manuel
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div
-                        id="exitPriceGroup"
-                        class="form-group"
-                    >
-
-                        <label for="tradeExitPrice">
-                            Prix de sortie
-                        </label>
-
-                        <input
-                            id="tradeExitPrice"
-                            type="number"
-                            step="any"
-                            placeholder="Prix réel de sortie"
-                        >
-
-                    </div>
-
-
-                    <div class="form-group calculated-field">
-
-                        <label>
-                            Pips réalisés
-                        </label>
-
-                        <div
-                            id="tradeResultPipsDisplay"
-                            class="calculated-value"
-                        >
-                            0
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group calculated-field">
-
-                        <label>
-                            RR réalisé
-                        </label>
-
-                        <div
-                            id="tradeRealizedRRDisplay"
-                            class="calculated-value"
-                        >
-                            0.00
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-group calculated-field highlight-field">
-
-                        <label>
-                            P&L
-                        </label>
-
-                        <div
-                            id="tradePnLDisplay"
-                            class="calculated-value"
-                        >
-                            $0.00
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="form-section">
-
-                <div class="form-section-title">
-                    Analyse
-                </div>
-
-
-                <div class="form-grid">
-
-                    <div class="form-group">
-
-                        <label for="tradePlanRespect">
-                            Respect du plan
-                        </label>
-
-                        <select id="tradePlanRespect">
-
-                            <option value="YES">
-                                Oui
-                            </option>
-
-                            <option value="NO">
-                                Non
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="tradeError">
-                            Erreur de trading
-                        </label>
-
-                        <select id="tradeError">
-
-                            <option value="NO">
-                                Non
-                            </option>
-
-                            <option value="YES">
-                                Oui
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-
-                <div class="form-group">
-
-                    <label for="tradeComment">
-                        Commentaire
-                    </label>
-
-                    <textarea
-                        id="tradeComment"
-                        rows="4"
-                        placeholder="Notes et analyse du trade..."
-                    ></textarea>
-
-                </div>
-
-            </div>
-
-
-            <div class="modal-actions">
-
-                <button
-                    type="button"
-                    class="secondary-button"
-                    data-close-modal="tradeModal"
-                >
-                    Annuler
-                </button>
-
-                <button
-                    id="saveTradeButton"
-                    type="submit"
-                    class="primary-button"
-                >
-                    Enregistrer le trade
-                </button>
-
-            </div>
-
-        </form>
-
     </div>
 
-</div>
+
+    <!-- =========================================================
+         INPUT IMPORT DONNÉES
+         ========================================================= -->
+
+    <input
+        id="importFileInput"
+        type="file"
+        accept=".json,application/json"
+        hidden
+    >
 
 
-<div
-    id="toastContainer"
-    class="toast-container"
-></div>
+    <!-- =========================================================
+         TOAST / NOTIFICATIONS
+         ========================================================= -->
+
+    <div
+        id="toastContainer"
+        class="toast-container"
+        aria-live="polite"
+        aria-atomic="true"
+    ></div>
 
 
-<script src="app.js"></script>
+    <!-- =========================================================
+         JAVASCRIPT
+         ========================================================= -->
+
+    <script src="modules/storage.js"></script>
+    <script src="modules/calculations.js"></script>
+    <script src="modules/capital.js"></script>
+    <script src="modules/trades.js"></script>
+    <script src="modules/statistics.js"></script>
+    <script src="app.js"></script>
 
 </body>
 </html>
